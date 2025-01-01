@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Effect</title>
+    <style>
+ 
+        *{
+        font-family: jetbrains +mono;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #ffcc33, #ff6699);
+            font-family: Arial, sans-serif;
+        }
+
+        .hover {
+            width: 200px;
+            height: 100px;
+            background-color: rgba(189, 122, 122, 0.8);
+            text-align: center;
+            line-height: 100px;
+            border: 2px solid rgba(136, 85, 85, 0.8);
+            border-radius: 12px;
+            position: relative;
+            font-size: 30px;
+            box-shadow: 5px 6px 20px 0px rgba(31, 30, 30, 0.5);
+            transition: all 0.7s ease;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .hover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transition: all 0.7s ease;
+        }
+
+        .hover:hover::before {
+            left: 100%;
+        }
+
+        .hover:hover {
+            content: "Yeah you.";
+            background-color: rgba(122, 189, 122, 0.8);
+            color: white;
+            border: 2px solid rgba(85, 136, 85, 0.8);
+            box-shadow: 10px 12px 30px 0px rgba(0, 0, 0, 0.75);
+            font-size: 31px;
+            transform: rotate(-5deg) scale(1.1);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="hover">Hey you.</div>
+    
+</body>
+
+</html>
+<script>
+    const hoverElement = document.querySelector('.hover');
+    const originalText = hoverElement.textContent;
+
+    hoverElement.addEventListener('mouseover', () => {
+        hoverElement.textContent = 'Yeah you.';
+    });
+
+    hoverElement.addEventListener('mouseout', () => {
+        hoverElement.textContent = originalText;
+    });
+</script>
